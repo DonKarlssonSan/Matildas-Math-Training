@@ -1,0 +1,19 @@
+<!doctype html>
+<html ng-app>
+  <head>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.0/angular.min.js"></script>
+    <script src="mathapp.js"></script>
+  </head>
+  <body>
+    <h2>Math App</h2>
+    <div ng-controller="MathAppCtrl">
+    What is {{first}} + {{second}}? 	
+    <form ng-submit="checkAnswer()">
+      <input type="text" ng-model="givenAnswer" size="30" placeholder="type your answer here">
+      <input class="btn-primary" type="submit" value="Done!">
+    </form>
+    {{message}} <br/>
+    Number of correct anwers: {{nrOfCorrectAnswers}}
+    </div>
+  </body>
+</html>
