@@ -1,0 +1,132 @@
+body {
+    background-color: #2f5a51;
+    background: url(bg2.jpg) no-repeat;
+    background-size: 100% auto;
+    padding-top: 12%;
+    font-family: "Helvetica", "Arial", "Verdana";
+    color: #000;
+    max-width: 320px; !important;
+    width: 100%;
+    margin: 0 auto;
+    text-align: center;  
+}
+
+input  {
+    max-width: 320px; !important;
+    width: 100%;
+    height: 48px;
+    margin-right: 0px;
+    margin-left: 0px;
+    -moz-border-radius: 9px;
+    -webkit-border-radius: 9px;
+    border-radius: 9px; /* border radius */
+    border: 1px solid #5b707a;
+    margin-left: 1px;
+    -moz-box-sizing:border-box;
+    -webkit-box-sizing:border-box;
+    box-sizing:border-box;
+    /*font-family: "Helvetica", "Arial", "Verdana";*/
+    font-weight: 400;
+    font-size: 20px;
+    text-align: center;
+    padding-right: 4px;
+    color: #000 !important;
+    line-height: 18px;
+    outline: none;
+    margin-bottom: 16px;
+    background-color: #accde4;
+    opacity: 0.6;
+    -moz-box-shadow: 0 1px 3px rgba(0,0,0,.15); /* drop shadow */
+    -webkit-box-shadow: 0 1px 3px rgba(0,0,0,.15); /* drop shadow */
+    box-shadow: 0 1px 3px rgba(0,0,0,.15); /* drop shadow */
+}
+
+.btn-primary {
+    color: #fff;
+    max-width: 320px; !important;
+    width: 100%;
+    height: 48px;
+    margin: 0 auto;
+    -moz-border-radius: 9px;
+    -webkit-border-radius: 9px;
+    border-radius: 9px; /* border radius */
+    font-weight: 600;
+    font-size: 16px;
+    -o-transition:.4s;
+    -ms-transition:.4s;
+    -moz-transition:.4s;
+    -webkit-transition:.4s;
+    transition:.4s;
+    background-color: #1d65b5;
+    border: 1px solid #154c8b;
+    color: #092d56;
+    text-decoration: none;
+    -o-transition:.7s;
+    -ms-transition:.7s;
+    -moz-transition:.7s;
+    -webkit-transition:.7s;
+    transition:.7s;
+    -moz-box-shadow: 0 1px 3px rgba(0,0,0,.15); /* drop shadow */
+    -webkit-box-shadow: 0 1px 3px rgba(0,0,0,.15); /* drop shadow */
+    box-shadow: 0 1px 3px rgba(0,0,0,.15); /* drop shadow */
+}
+
+.btn-primary:hover {
+    cursor: hand; cursor: pointer;
+    background-color: #1ca593;
+    border: 1px solid #13897a;
+    color: #0a5148;
+}
+
+.ng-controller {
+    text-align: center;  
+    position: relative;
+}
+
+h2 {
+    font-size: 28px;
+}
+
+.bubble {
+    opacity: 0.6;
+    position: relative;
+    margin: 0 auto;
+    max-width: 320px; !important;
+    width: 100%;
+    height: 100px;
+    padding: 0px;
+    background: #accde4;
+    -webkit-border-radius: 10px;
+    -moz-border-radius: 10px;
+    border-radius: 10px;
+    border: #5b707a solid 1px;
+    margin-bottom: 30px;
+    -moz-box-shadow: 0 1px 3px rgba(0,0,0,.15); /* drop shadow */
+    -webkit-box-shadow: 0 1px 3px rgba(0,0,0,.15); /* drop shadow */
+    box-shadow: 0 1px 3px rgba(0,0,0,.15); /* drop shadow */
+}
+.bubble:after {
+    content: '';
+    position: absolute;
+    border-style: solid;
+    border-width: 15px 15px 15px 0;
+    border-color: transparent #accde4;
+    display: block;
+    width: 0;
+    z-index: 1;
+    left: -15px;
+    top: 19px;
+}
+
+.bubble:before {
+    content: '';
+    position: absolute;
+    border-style: solid;
+    border-width: 15px 15px 15px 0;
+    border-color: transparent #5b707a;
+    display: block;
+    width: 0;
+    z-index: 0;
+    left: -16px;
+    top: 19px;
+}

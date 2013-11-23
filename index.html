@@ -3,18 +3,22 @@
   <head>
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.0/angular.min.js"></script>
     <script src="mathapp.js"></script>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+     <link href="mathapp.css" rel="stylesheet">
+     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
   </head>
   <body>
-    <h2>Math App</h2>
     <div ng-controller="MathAppCtrl">
-    What is {{first}} + {{second}}? 	
-    <form ng-submit="checkAnswer()">
-      <input type="number" ng-model="givenAnswer" size="30" placeholder="type your answer here">
-      <input class="btn-primary" type="submit" value="Done!">
-    </form>
-    {{message}} <br/>
-    Number of correct anwers: {{nrOfCorrectAnswers}}
+      <div class="bubble">
+        <h2>What is {{first}} + {{second}}?</h2> 
+      </div>	
+      <form ng-submit="checkAnswer()">
+        <input type="text" ng-model="givenAnswer" size="30" placeholder="type your answer here">
+        <input class="btn-primary" type="submit" value="Done!">
+      </form>
+      <div>
+      <span>{{message}}</span><br/>
+      <span>Number of correct anwers: {{nrOfCorrectAnswers}}</span>
+      </div>
     </div>
   </body>
 </html>
