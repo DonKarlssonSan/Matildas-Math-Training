@@ -1,8 +1,20 @@
 function MathAppCtrl($scope) {
   $scope.getRandomNumber = function () {
-    return Math.floor((Math.random()*10)+1);
+    return $scope.getRandomNumberWithMax(10);
   };
 
+  $scope.getRandomNumberWithMax = function (max) {
+    return Math.floor((Math.random()*max)+1);
+  };
+
+  $scope.playRandomly = function() {
+      var random = $scope.getRandomNumber();
+      if(random > 0 && random <= 2) {
+          var snd = new Audio(random.toString() + ".wav");
+          snd.play();      
+      }
+  }
+  
   // Initial state
   $scope.first = $scope.getRandomNumber();
   $scope.second = $scope.getRandomNumber();
@@ -19,6 +31,7 @@ function MathAppCtrl($scope) {
       $scope.first = $scope.getRandomNumber();
       $scope.second = $scope.getRandomNumber();
       $scope.nrOfCorrectAnswers++;  
+      $scope.playRandomly();
     } else {
       $scope.message = 'Try again!';
     } 	
