@@ -38,14 +38,14 @@ function MathAppCtrl($scope) {
     $scope.checkAnswer = function() {
         // Using evil twins for comparing a number with a string
         if ($scope.givenAnswer == $scope.answer()) {
-            $scope.message = 'Rätt!';
+            $scope.message = 'Bra!';
             $scope.first = $scope.getRandomNumber();
             $scope.second = $scope.getRandomNumber();
             $scope.nrOfCorrectAnswers++;
             $scope.doToggleAnimation();
             $scope.playRandomly();
         } else {
-            $scope.message = 'Försök igen!';
+            $scope.message = 'Testa igen!';
         }
         $scope.givenAnswer = '';
     };
