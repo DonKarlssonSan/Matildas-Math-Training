@@ -93,7 +93,7 @@ h2 {
     margin: 0 auto;
     max-width: 320px; !important;
     width: 100%;
-    height: 100px;
+    height: 150px;
     padding: 0px;
     background: #accde4;
     -webkit-border-radius: 10px;
@@ -129,4 +129,25 @@ h2 {
     z-index: 0;
     left: -16px;
     top: 19px;
+}
+
+/* Animations */
+.pointsAnimation-add {
+    -webkit-transition:0.3s linear all;
+    transition:0.3s linear all;
+    font-size:50.0em;
+}
+
+.pointsAnimation-add-active {
+    font-size:1.0em;
+}
+
+.pointsAnimation-remove {
+    -webkit-transition:0.3s linear all;
+    transition:0.3s linear all;
+    font-size:50.0em;
+}
+
+.pointsAnimation-remove-active {
+    font-size:1.0em;
 }
