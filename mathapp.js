@@ -10,7 +10,7 @@ function MathAppCtrl($scope) {
     };
 
     $scope.playRandomly = function() {
-        var random = $scope.getRandomNumber();
+        var random = $scope.getRandomNumberWithMax(4);
         if (random > 0 && random <= 2) {
             var snd = new Audio(random.toString() + ".wav");
             snd.play();
