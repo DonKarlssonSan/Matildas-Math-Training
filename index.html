@@ -11,6 +11,11 @@
     </head>
     <body>
         <div ng-controller="MathAppCtrl">
+            <div>
+                <button ng-click="decreaseLevel()">-</button>
+                Svårighetsgrad: {{getLevelString()}}
+                <button ng-click="increaseLevel()">+</button>
+            </div>
             <div class="bubble">
                 <h2>{{message}}</h2>
                 <h2>Vad är {{first}} + {{second}}?</h2> 
