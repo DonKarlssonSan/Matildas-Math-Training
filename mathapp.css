@@ -11,7 +11,7 @@ body {
     text-align: center;  
 }
 
-input  {
+.big  {
     max-width: 320px; !important;
     width: 100%;
     height: 48px;
@@ -43,13 +43,7 @@ input  {
 
 .btn-primary {
     color: #fff;
-    max-width: 320px; !important;
-    width: 100%;
-    height: 48px;
     margin: 0 auto;
-    -moz-border-radius: 9px;
-    -webkit-border-radius: 9px;
-    border-radius: 9px; /* border radius */
     font-weight: 600;
     font-size: 16px;
     -o-transition:.4s;

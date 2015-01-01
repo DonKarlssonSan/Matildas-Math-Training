@@ -12,17 +12,21 @@
     <body>
         <div ng-controller="MathAppCtrl">
             <div>
+                Plus: <input type="checkbox" checked ng-click="togglePlus()"></input>
+                Minus: <input type="checkbox" ng-click="toggleMinus()"></input>
+            </div>
+            <div>
                 <button ng-click="decreaseLevel()">-</button>
                 Svårighetsgrad: {{getLevelString()}}
                 <button ng-click="increaseLevel()">+</button>
             </div>
             <div class="bubble">
                 <h2>{{message}}</h2>
-                <h2>Vad är {{first}} + {{second}}?</h2> 
+                <h2>Vad är {{first}} {{sign}} {{second}}?</h2> 
             </div>	
             <form ng-submit="checkAnswer()">
-                <input type="number" ng-model="givenAnswer" size="30" placeholder="skriv här">
-                <input class="btn-primary" type="submit" value="Klar!">
+                <input class="big" type="number" ng-model="givenAnswer" size="30" placeholder="skriv här">
+                <input class="btn-primary big" type="submit" value="Klar!">
             </form>
             <div>
                 <br />
