@@ -2,55 +2,15 @@
 var myApp = angular.module('MathApp', ['ngAnimate']);
 
 function MathAppCtrl($scope) {
-    var setSign = function () {
-        if(usePlus && useMinus) {
-            $scope.sign = getRandomSign();
-        } else if (usePlus) {
-            $scope.sign = "+";
-        } else if (useMinus) {
-            $scope.sign = "-";
-        }
-    };
-    
-    var getRandomNumber = function () {
-        var max = 0;
-        if (level === 1) {
-            max = 10;
-        } else if (level === 2) {
-            max = 20;
-        } else if (level === 3) {
-            max = 100;
-        }
-        return getRandomNumberWithMax(max);
-    };
-
-    var getRandomNumberWithMax = function (max) {
-        return Math.floor((Math.random() * max) + 1);
-    };
-    
-    var getNewNumbers = function () {
-        do {
-            $scope.first = getRandomNumber();
-            $scope.second = getRandomNumber();
-            setSign();
-        } while (level === 1 && $scope.sign === "-" && $scope.first < $scope.second)
-    };
-
-    var playRandomly = function () {
-        var random = getRandomNumberWithMax(4);
-        if (random > 0 && random <= 2) {
-            var snd = new Audio(random.toString() + '.wav');
-            snd.play();
-        }
-    };
-
+  
     // Initial state
-    getNewNumbers();
     $scope.nrOfCorrectAnswers = 0;
     $scope.animationToggle = '';
     var level = 1; // 1: easy 1-10, 2: medium: 1-20, hard: 1-100
     var usePlus = true;
     var useMinus = false;
+    var useMult = false;
+    var useDiv = false;
     $scope.sign = "+";
 
     $scope.answer = function () {
@@ -115,7 +75,94 @@ function MathAppCtrl($scope) {
         getNewNumbers();
     };
     
-    var getRandomSign = function () {
-        return getRandomNumberWithMax(2) === 1 ? "-" : "+";
+    $scope.toggleMult = function () {
+        useMult = !useMult;
+        getNewNumbers();
     };
+    
+    $scope.toggleDiv = function () {
+        useDiv = !useDiv;
+        getNewNumbers();
+    };
+    
+    var getRandomSign = function () {
+        var operator = "";
+        do {
+            switch (getRandomNumberWithMax(4)) {
+                case 1:
+                    if(usePlus) {
+                        operator = "+";
+                    }
+                    break;
+                case 2:
+                    if(useMinus) {
+                        operator = "-";
+                    }
+                    break;
+                case 3:
+                    if(useMult) {
+                        operator = "*";
+                    }
+                    break;
+                case 4:
+                    if(useDiv) {
+                        operator = "/";
+                    }
+                    break;
+                default:
+                    break;
+            }
+        } while (operator === "")
+        return  operator;
+    };
+    
+    var getRandomNumber = function () {
+        var max = 0;
+        if (level === 1) {
+            max = 10;
+        } else if (level === 2) {
+            max = 20;
+        } else if (level === 3) {
+            max = 100;
+        }
+        return getRandomNumberWithMax(max);
+    };
+
+    var getRandomNumberWithMax = function (max) {
+        return Math.floor((Math.random() * max) + 1);
+    };
+    
+    var newValuesAreOk = function () {
+        var areOk = true;
+        switch($scope.sign) {
+            case "-":
+                if (level === 1) {
+                    areOk = $scope.first >= $scope.second;
+                }
+                break;
+            case "/":
+                areOk = $scope.first % $scope.second === 0;
+            default:
+                break;
+        }
+        return areOk;
+    }
+
+    var getNewNumbers = function () {
+        do {
+            $scope.first = getRandomNumber();
+            $scope.second = getRandomNumber();
+            $scope.sign = getRandomSign();
+        } while (!newValuesAreOk())
+    };
+
+    var playRandomly = function () {
+        var random = getRandomNumberWithMax(4);
+        if (random > 0 && random <= 2) {
+            var snd = new Audio(random.toString() + '.wav');
+            snd.play();
+        }
+    };
+
+    getNewNumbers();
 }
