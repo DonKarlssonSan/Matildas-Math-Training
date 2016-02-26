@@ -1,11 +1,11 @@
-'use strict';
-var myApp = angular.module('MathApp', ['ngAnimate']);
+"use strict";
+var myApp = angular.module("MathApp", ["ngAnimate"]);
 
 function MathAppCtrl($scope) {
   
     // Initial state
     $scope.nrOfCorrectAnswers = 0;
-    $scope.animationToggle = '';
+    $scope.animationToggle = "";
     var level = 1; // 1: easy 1-10, 2: medium: 1-20, hard: 1-100
     var usePlus = true;
     var useMinus = false;
@@ -33,35 +33,35 @@ function MathAppCtrl($scope) {
     };
 
     var doToggleAnimation = function () {
-        if ($scope.animationToggle === '') {
-            $scope.animationToggle = 'pointsAnimation';
+        if ($scope.animationToggle === "") {
+            $scope.animationToggle = "pointsAnimation";
         } else {
-            $scope.animationToggle = '';
+            $scope.animationToggle = "";
         }
     };
 
     $scope.checkAnswer = function () {
         // Using evil twins for comparing a number with a string
         if ($scope.givenAnswer == $scope.answer()) {
-            $scope.message = 'Bra!';
+            $scope.message = "Bra!";
             getNewNumbers();
             $scope.nrOfCorrectAnswers++;
             doToggleAnimation();
             playRandomly();
         } else {
-            $scope.message = 'Testa igen!';
+            $scope.message = "Testa igen!";
         }
-        $scope.givenAnswer = '';
+        $scope.givenAnswer = "";
     };
     
     $scope.getLevelString = function () {
         switch (level) {
         case 1:
-            return 'Lätt (1 - 10)';
+            return "Lätt (1 - 10)";
         case 2:
-            return 'Mellan (1 - 20)';
+            return "Mellan (1 - 20)";
         case 3:
-            return 'Svår (1 - 100)';
+            return "Svår (1 - 100)";
         }
     };
     
@@ -159,7 +159,7 @@ function MathAppCtrl($scope) {
     var playRandomly = function () {
         var random = getRandomNumberWithMax(4);
         if (random > 0 && random <= 2) {
-            var snd = new Audio(random.toString() + '.wav');
+            var snd = new Audio(random.toString() + ".wav");
             snd.play();
         }
     };
