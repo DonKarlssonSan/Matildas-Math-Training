@@ -18,9 +18,9 @@
                 Delat: <input type="checkbox" ng-click="toggleDiv()"></input>
             </div>
             <div>
-                <button ng-click="decreaseLevel()">-</button>
-                Svårighetsgrad: {{getLevelString()}}
-                <button ng-click="increaseLevel()">+</button>
+                <button ng-click="decreaseMax()">-</button>
+                Fråga mig inte större än: {{max}}
+                <button ng-click="increaseMax()">+</button>
             </div>
             <div class="bubble">
                 <h2>{{message}}</h2>

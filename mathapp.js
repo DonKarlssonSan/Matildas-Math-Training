@@ -6,7 +6,7 @@ function MathAppCtrl($scope) {
     // Initial state
     $scope.nrOfCorrectAnswers = 0;
     $scope.animationToggle = "";
-    var level = 1; // 1: easy 1-10, 2: medium: 1-20, hard: 1-100
+    $scope.max = 10;
     var usePlus = true;
     var useMinus = false;
     var useMult = false;
@@ -18,16 +18,14 @@ function MathAppCtrl($scope) {
         return eval($scope.first + $scope.sign + $scope.second);
     };
     
-    $scope.increaseLevel = function () {
-        if (level < 3) {
-            level++;
-            getNewNumbers();
-        }
+    $scope.increaseMax = function () {
+        $scope.max++;
+        getNewNumbers();
     };
 
-    $scope.decreaseLevel = function () {
-        if (level > 1) {
-            level--;
+    $scope.decreaseMax = function () {
+        if ($scope.max > 1) {
+            $scope.max--;
             getNewNumbers();
         }
     };
@@ -43,9 +41,9 @@ function MathAppCtrl($scope) {
     $scope.checkAnswer = function () {
         // Using evil twins for comparing a number with a string
         if ($scope.givenAnswer == $scope.answer()) {
-            $scope.message = "Bra!";
             getNewNumbers();
             $scope.nrOfCorrectAnswers++;
+            $scope.message = getMessage();
             doToggleAnimation();
             playRandomly();
         } else {
@@ -54,17 +52,40 @@ function MathAppCtrl($scope) {
         $scope.givenAnswer = "";
     };
     
-    $scope.getLevelString = function () {
-        switch (level) {
-        case 1:
-            return "Lätt (1 - 10)";
-        case 2:
-            return "Mellan (1 - 20)";
-        case 3:
-            return "Svår (1 - 100)";
+    var getMessage = function () {
+        var message = "";
+        switch ($scope.nrOfCorrectAnswers) {
+            case 5:
+                message = "Snyggt!"
+                break;
+            case 10:
+                message = "Mycket bra!"
+                break;
+            case 20:
+                message = "Väldigt bra!"
+                break;
+            case 30:
+                message = "Bra jobbat hörru!"
+                break;
+            case 40:
+                message = "Hejja, vad bra du är!"
+                break;
+            case 50:
+                message = "Superbra!"
+                break;
+            case 60:
+                message = "Du är bäst! =)"
+                break;
+            case 70:
+                message = "Wow! BRAAA!!"
+                break;
+            default:
+                message = "Bra!";
+                break;
         }
-    };
-    
+        return message;
+    }
+       
     $scope.togglePlus = function () {
         usePlus = !usePlus;
         getNewNumbers();
@@ -86,6 +107,9 @@ function MathAppCtrl($scope) {
     };
     
     var getRandomSign = function () {
+        if(!usePlus && !useMinus && !useMult && !useDiv) {
+            return "+";
+        }
         var operator = "";
         do {
             switch (getRandomNumberWithMax(4)) {
@@ -117,15 +141,7 @@ function MathAppCtrl($scope) {
     };
     
     var getRandomNumber = function () {
-        var max = 0;
-        if (level === 1) {
-            max = 10;
-        } else if (level === 2) {
-            max = 20;
-        } else if (level === 3) {
-            max = 100;
-        }
-        return getRandomNumberWithMax(max);
+        return getRandomNumberWithMax($scope.max);
     };
 
     var getRandomNumberWithMax = function (max) {
@@ -136,9 +152,7 @@ function MathAppCtrl($scope) {
         var areOk = true;
         switch($scope.sign) {
             case "-":
-                if (level === 1) {
-                    areOk = $scope.first >= $scope.second;
-                }
+                areOk = $scope.first >= $scope.second;
                 break;
             case "/":
                 areOk = $scope.first % $scope.second === 0;
